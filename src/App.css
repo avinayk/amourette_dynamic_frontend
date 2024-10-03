@@ -1,0 +1,399 @@
+:root {
+  --primary: #6e75a8;
+  --secretary: #cabca5;
+  --lightblack: #1b1b1b;
+}
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+input,
+textarea,
+select,
+ol,
+ul,
+li,
+a,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  text-decoration: none;
+  outline: none;
+}
+
+a,
+a:hover,
+a:focus,
+*:focus-visible {
+  cursor: pointer;
+  -webkit-transition: all 0.4s ease 0s;
+  -moz-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+  text-decoration: none;
+  outline: none;
+}
+
+button:focus {
+  outline: none;
+  border: none;
+}
+
+button:focus,
+input:focus {
+  box-shadow: none !important;
+}
+
+button {
+  cursor: pointer;
+}
+
+*,
+*:after,
+*:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.ls li {
+  list-style: none;
+}
+
+.cur {
+  cursor: pointer;
+}
+
+.fulw img {
+  width: 100%;
+}
+
+.rel {
+  position: relative;
+}
+
+.ofit img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+body {
+  font-family: "Open Sans", sans-serif !important;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background: #121212 !important;
+}
+header {
+  background: var(--lightblack);
+  padding: 10px 0;
+}
+.toplogo {
+  width: 200px;
+}
+.topbtn {
+  text-align: center;
+  color: #fff;
+  font-size: 16px;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  width: 200px;
+  padding: 6px 15px;
+  text-transform: uppercase;
+  background: transparent;
+}
+.loginbtn {
+  border-color: var(--primary);
+}
+.loginbtn:hover {
+  background: var(--primary);
+  color: #000;
+}
+.registerbtn {
+  border-color: var(--secretary);
+}
+.registerbtn:hover {
+  background: var(--secretary);
+  color: #000;
+}
+.welcomebox {
+  padding: 10% 0;
+  background: #000 url(./assets/images/girl.jpg) no-repeat right top;
+  background-size: contain;
+}
+.weltextbox h1 {
+  font-size: 16px;
+  color: var(--secretary);
+  line-height: 20px;
+  text-transform: uppercase;
+}
+.weltextbox h2 {
+  font-size: 40px;
+  color: #fff;
+  font-weight: 600;
+  line-height: 46px;
+}
+.weltextbox p {
+  font-size: 16px;
+  color: #fff;
+  line-height: 24px;
+  text-wrap: balance;
+}
+.findbtn {
+  text-align: center;
+  color: #fff;
+  font-size: 16px;
+  border-radius: 10px;
+  border: 2px solid var(--primary);
+  max-width: 400px;
+  width: 100%;
+  padding: 14px 0;
+  text-transform: uppercase;
+  background: transparent;
+  display: inline-block;
+}
+.findbtn:hover {
+  background: var(--primary);
+  color: #000;
+}
+.weliconblock .iconwel {
+  width: 60px;
+}
+.weliconblock .iconwel img {
+  width: 100%;
+}
+.weliconblock h5 {
+  font-size: 20px;
+  color: var(--primary);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.weliconblock p {
+  color: #fff;
+  font-size: 16px;
+  text-wrap: balance;
+}
+.ftlogoblock h2 {
+  color: var(--secretary);
+  font-weight: 600;
+  font-size: 26px;
+}
+.ftlogoblock h6 {
+  font-size: 16px;
+  color: #fff;
+  line-height: 24px;
+}
+.copyrighttext {
+  font-size: 14px;
+  color: var(--secretary);
+  text-transform: capitalize;
+}
+.ftblock {
+  border-left: 2px solid #000;
+}
+.ftblock h3 {
+  font-size: 18px;
+  color: var(--secretary);
+  font-weight: 600;
+}
+.ftlink a {
+  color: #fff;
+  font-size: 16px;
+  text-transform: capitalize;
+}
+.ftlink a:hover {
+  color: var(--primary);
+}
+.regblock {
+  padding: 10% 0;
+  background: url(./assets/images/image2.jpg) no-repeat bottom left;
+  background-size: 50%;
+}
+.regform {
+  background: #212121;
+  padding: 30px;
+  border-radius: 10px;
+}
+.regtitle h2 {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+}
+.regtitle p {
+  font-size: 16px;
+  color: #fff;
+}
+.regform label {
+  font-size: 16px;
+  color: #fff;
+}
+.regform input[type="email"],
+.regform input[type="text"],
+.regform input[type="number"],
+.regform input[type="password"],
+select {
+  font-size: 16px;
+  color: #fff;
+  width: 100%;
+  background: #3c3c3c;
+  border-radius: 8px;
+  padding: 10px;
+  border: none;
+}
+.regbtnsubmit {
+  text-align: center;
+  color: #fff;
+  font-size: 16px;
+  border-radius: 10px;
+  border: 2px solid var(--primary);
+  width: 100%;
+  padding: 14px 0;
+  text-transform: uppercase;
+  background: transparent;
+  display: inline-block;
+}
+.regbtnsubmit:hover {
+  background: var(--primary);
+  color: #000;
+}
+.regform .listbox {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.regform .listbox label {
+  font-size: 16px;
+  color: #fff;
+}
+/***check box css****/
+
+.listbox .cbox {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.listbox .cbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.listbox .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  border-radius: 4px;
+  background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.listbox .cbox:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.listbox .cbox input:checked ~ .checkmark {
+  background-color: #3c3c3c;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.listbox .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.listbox .cbox input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.listbox .cbox .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.outerupload{
+  border:2px solid var(--secretary);
+  border-radius: 10px;
+  position: relative;
+  width: 200px;
+  height: 100px;
+  text-align: center;
+}
+.uploadimg{
+  height: 100%;
+  line-height: 100px;
+}
+.uploadimg svg{
+  fill:var(--secretary);
+  font-size: 40px;
+
+}
+.outerupload  input[type="file"]{
+  position: absolute;
+  z-index: 2;
+  background: red;
+  inset: 0;
+  cursor: pointer;
+  opacity: 0;
+}
+.topsearch form input{
+  font-size: 16px;
+  color: #fff;
+  width: 100%;
+  background: #121212;
+  border-radius: 100px;
+  padding: 10px 30px;
+  border: none;
+}
+.topmenu{
+  background: #121212;
+  border: none;
+  width: 40px;
+  aspect-ratio: 1;
+  border-radius: 100px;
+  padding: 6px;
+  line-height: 10px;
+  border: 2px solid transparent;
+}
+.topmenu img{
+  width: 100%;
+}
+.topmenu:hover{
+border-color: var(--secretary);
+}
+@media (max-width: 990px) {
+  .welcomebox {
+    background-size: cover;
+  }
+}
+@media (max-width: 768px) {
+}
+@media (max-width: 480px) {
+  .topbtn {
+    width: 140px;
+  }
+}
