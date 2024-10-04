@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {Header} from "../components/Header";
 import icon1 from "../assets/images/icon1.png";
 import icon2 from "../assets/images/icon2.png";
@@ -28,9 +29,9 @@ function Home() {
                       Excepteur in qui in commodo qui aute et.
                     </p>
                     <div className="d-block mt-3">
-                      <a href="#" className="findbtn">
+                      <Link to="/" className="findbtn">
                         FIND YOUR NEXT PARTNER
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -41,7 +42,7 @@ function Home() {
                     <div className="d-flex gap-2 align-items-center">
                       <div className="flex-shrink-0">
                         <div className="iconwel">
-                          <img src={icon1} alt="icon" />
+                          <img src={icon1} alt="userpic" />
                         </div>
                       </div>
                       <div className="flex-grow-1">
@@ -63,7 +64,7 @@ function Home() {
                     <div className="d-flex gap-2 align-items-center">
                       <div className="flex-shrink-0">
                         <div className="iconwel">
-                          <img src={icon2} alt="icon" />
+                          <img src={icon2} alt="userpic" />
                         </div>
                       </div>
                       <div className="flex-grow-1">
@@ -85,7 +86,7 @@ function Home() {
                     <div className="d-flex gap-2 align-items-center">
                       <div className="flex-shrink-0">
                         <div className="iconwel">
-                          <img src={icon3} alt="icon" />
+                          <img src={icon3} alt="userpic" />
                         </div>
                       </div>
                       <div className="flex-grow-1">

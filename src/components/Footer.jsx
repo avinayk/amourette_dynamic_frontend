@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 export const Footer = () => {
   return (
     <>
@@ -21,9 +21,9 @@ export const Footer = () => {
                 <div className="d-flex flex-column gap-3 ftblock ps-3 ps-sm-5">
                   <h3>About</h3>
                   <div className="d-flex flex-column gap-2 ftlink">
-                    <a href="#">Membership</a>
-                    <a href="#">Help and support</a>
-                    <a href="#">Contact us</a>
+                    <Link to="/membership">Membership</Link>
+                    <Link to="/">Help and support</Link>
+                    <Link to="/">Contact us</Link>
                   </div>
                 </div>
               </div>
@@ -31,9 +31,9 @@ export const Footer = () => {
                 <div className="d-flex flex-column gap-3 ftblock  ps-3 ps-sm-5">
                   <h3>Resources</h3>
                   <div className="d-flex flex-column gap-2 ftlink">
-                    <a href="#">Security</a>
-                    <a href="#">privacy</a>
-                    <a href="#">Terms and conditions</a>
+                    <Link to="/">Security</Link>
+                    <Link to="/">privacy</Link>
+                    <Link to="/">Terms and conditions</Link>
                   </div>
                 </div>
               </div>

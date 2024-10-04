@@ -267,7 +267,10 @@ select {
   color: #fff;
 }
 /***check box css****/
-
+.useruploadpic .listbox label {
+  font-size: 16px;
+  color: #fff;
+}
 .listbox .cbox {
   display: block;
   position: relative;
@@ -335,32 +338,30 @@ select {
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
-.outerupload{
-  border:2px solid var(--secretary);
+.outerupload {
+  border: 2px solid var(--secretary);
   border-radius: 10px;
   position: relative;
   width: 200px;
   height: 100px;
   text-align: center;
 }
-.uploadimg{
+.uploadimg {
   height: 100%;
   line-height: 100px;
 }
-.uploadimg svg{
-  fill:var(--secretary);
+.uploadimg svg {
+  fill: var(--secretary);
   font-size: 40px;
-
 }
-.outerupload  input[type="file"]{
+.outerupload input[type="file"] {
   position: absolute;
   z-index: 2;
-  background: red;
   inset: 0;
   cursor: pointer;
   opacity: 0;
 }
-.topsearch form input{
+.topsearch form input {
   font-size: 16px;
   color: #fff;
   width: 100%;
@@ -369,9 +370,8 @@ select {
   padding: 10px 30px;
   border: none;
 }
-.topmenu{
+.topmenu {
   background: #121212;
-  border: none;
   width: 40px;
   aspect-ratio: 1;
   border-radius: 100px;
@@ -379,11 +379,392 @@ select {
   line-height: 10px;
   border: 2px solid transparent;
 }
-.topmenu img{
+.topmenu img {
   width: 100%;
 }
-.topmenu:hover{
-border-color: var(--secretary);
+.topmenu.active {
+  border: 2px solid var(--secretary);
+}
+.topmenu:hover,
+.topmenu:focus,
+.topmenu:focus-visible {
+  border: 2px solid var(--secretary);
+}
+
+.menubox {
+  background: #1b1b1b;
+  min-width: 340px;
+  position: absolute;
+  right: 0;
+  z-index: 600;
+}
+.menubox > div {
+  padding: 20px;
+}
+.menubox h3 {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+  border-bottom: 1px solid #3c3c3c;
+  padding-bottom: 6px;
+}
+.menubox a:hover h4,
+.menubox a:hover p,
+.menubox a:hover .iconmenu,
+.menubox button:hover h4,
+.menubox button:hover p,
+.menubox button:hover .iconmenu {
+  opacity: 0.8;
+}
+.menubox .iconmenu {
+  width: 40px;
+}
+.menubox h4 {
+  font-size: 16px;
+  color: #fff;
+  font-weight: 600;
+}
+.menubox p {
+  font-size: 14px;
+  color: #fff;
+}
+.morebtn a,
+.morebtn button {
+  text-transform: uppercase;
+  font-size: 16px;
+  color: #fff;
+  text-align: center;
+  border: 2px solid var(--primary);
+  border-radius: 8px;
+  padding: 6px;
+  display: block;
+  width: 100%;
+  background: transparent;
+}
+.morebtn a:hover,
+.morebtn button:hover {
+  background: var(--primary);
+  color: #fff;
+}
+.timeago {
+  color: var(--secretary) !important;
+}
+.minimsg {
+  font-size: 14px;
+  color: var(--secretary);
+  width: 200px; /* Set a fixed width */
+  white-space: nowrap; /* Prevents the text from wrapping to the next line */
+  overflow: hidden; /* Hides the overflowing content */
+  text-overflow: ellipsis; /* Shows "..." when the text overflows */
+}
+.inboxser input {
+  font-size: 16px;
+  color: #fff;
+  width: 100%;
+  background: #3c3c3c;
+  border-radius: 100px;
+  padding: 10px 30px;
+  border: none;
+}
+.helpset {
+  border-top: 1px solid #3c3c3c;
+}
+
+.edittitle h3 {
+  color: #fff;
+  font-size: 26px;
+  font-weight: 600;
+}
+.savebtn {
+  text-transform: uppercase;
+  font-size: 16px;
+  color: #fff;
+  text-align: center;
+  border: 2px solid var(--primary);
+  border-radius: 8px;
+  padding: 6px 30px;
+  display: block;
+  background: transparent;
+}
+.savebtn:hover {
+  background: var(--primary);
+  color: #fff;
+}
+.formlook label {
+  font-size: 16px;
+  color: #fff;
+  text-transform: capitalize;
+}
+.formlook textarea,
+.formlook input[type="text"],
+.formlook input[type="number"],
+select {
+  background: #3c3c3c;
+  border-radius: 10px;
+  padding: 10px;
+  width: 100%;
+  color: #fff;
+  font-size: 16px;
+  border: none;
+}
+.formlook .accordion .accordion__button {
+  background: #121212 !important;
+  position: relative;
+}
+.formlook .accordion .accordion__button::before {
+  right: 0;
+  left: auto;
+  position: absolute;
+  top: 50%;
+  color: #fff;
+  transform: rotate(45deg);
+}
+.formlook .accordion .accordion__button[aria-expanded="true"]::before {
+  transform: rotate(-135deg);
+}
+.formlook .accordion .accordion__item {
+  border-bottom: 1px solid #fff;
+}
+.formlook .accordion .accordion__item .acciconimg {
+  width: 40px;
+}
+.formlook .accordion .accordion__item h4 {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+}
+.formlook .listbox label {
+  font-size: 16px;
+}
+.uploadfile input[type="file"] {
+  position: absolute;
+  background: red;
+  inset: 0;
+  z-index: 33;
+  opacity: 0;
+  cursor: pointer;
+}
+.inload {
+  border: 2px solid var(--secretary);
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+.inload svg {
+  fill: var(--secretary);
+  stroke: var(--secretary);
+  font-size: 50px;
+}
+.inload h3 {
+  color: #fff;
+  font-size: 20px;
+  margin-top: 10px;
+}
+.bgload .inload {
+  height: 400px;
+}
+.smallload .inload {
+  height: 200px;
+}
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+  overflow-y: auto;
+  height: 100vh;
+}
+
+.popup-content {
+  width: 80%; /* Adjust width as needed */
+  position: relative;
+  max-width: 1000px;
+  padding: 15px;
+}
+
+.popup-overlay .close-button {
+  background: none;
+  border: none;
+  font-size: 40px;
+  cursor: pointer;
+  position: absolute;
+  right: -10px;
+  top: -10px;
+  color: #fff;
+}
+
+.planbox {
+  background: #212121;
+  border-radius: 20px;
+  padding: 80px 20px;
+  color: #fff;
+  width: 100%;
+}
+.planbox h1 {
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+.planbox h2 {
+  font-size: 26px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.planbox p {
+  font-size: 16px;
+  font-weight: 400;
+}
+.planbox h3 {
+  font-size: 20px;
+  font-weight: 400;
+}
+.planbox h4 {
+  font-size: 16px;
+  font-weight: 400;
+}
+.planbox button {
+  text-transform: uppercase;
+  font-size: 16px;
+  color: #fff;
+  text-align: center;
+  border: 2px solid var(--primary);
+  border-radius: 8px;
+  padding: 6px;
+  display: block;
+  width: 100%;
+  background: transparent;
+}
+.planbox button:hover {
+  background: var(--primary);
+  color: #fff;
+}
+.planbox svg {
+  fill: var(--secretary);
+}
+
+.gapy {
+  padding: 80px 0;
+}
+.scrollyover {
+  height: 300px;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+.member-tabs {
+  display: flex;
+  gap: 25px;
+}
+.member-tabs .react-tabs__tab-list {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #212121 !important;
+}
+
+.member-tabs ul li h3 {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+  border-bottom: 1px solid #3c3c3c;
+  padding-bottom: 6px;
+}
+
+.member-tabs .iconmenu {
+  width: 40px;
+  aspect-ratio: 1;
+  background: #1b1b1b;
+  border-radius: 100px;
+  overflow: hidden;
+  padding: 4px;
+}
+.member-tabs ul li h4 {
+  font-size: 16px;
+  color: #fff;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+.member-tabs > ul > li {
+  border: none !important;
+}
+.member-tabs .react-tabs__tab--selected,
+.member-tabs .react-tabs__tab:hover {
+  background: #212121 !important;
+  border: none !important;
+  border-radius: 10px !important ;
+}
+.member-tabs .react-tabs__tab--selected::after {
+  display: none !important;
+}
+.member-tabs .react-tabs__tab-panel {
+  flex-grow: 1;
+}
+.mship h1 {
+  font-size: 28px;
+  font-weight: 400;
+  color: #fff;
+  text-transform: capitalize;
+}
+.meuser {
+  background: #212121;
+  border-radius: 10px;
+  padding: 25px;
+}
+.usermship {
+  height: 250px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.yourmship h5 {
+  font-size: 20px;
+  color: #fff;
+}
+.yourmship h6 {
+  font-size: 16px;
+  color: #fff;
+}
+.shipbtns .btn {
+  text-align: center;
+  color: #fff;
+  font-size: 16px;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  min-width: 200px;
+  width: 100%;
+  padding: 10px 0;
+  text-transform: uppercase;
+  background: transparent;
+  display: inline-block;
+}
+.shipbtns .pribtn {
+  border: 2px solid var(--primary);
+}
+.shipbtns .pribtn:hover {
+  background: var(--primary);
+  color: #000;
+}
+.shipbtns .celbtn {
+  border: 2px solid #a91d4a;
+}
+.shipbtns .celbtn:hover {
+  background: #a91d4a;
+  color: #000;
+}
+@media (max-width: 991px) {
+  .member-tabs {
+    flex-direction: column;
+    width: 100%;
+  }
+  .member-tabs .react-tabs__tab-list {
+    width: 100%;
+  }
 }
 @media (max-width: 990px) {
   .welcomebox {
@@ -391,6 +772,12 @@ border-color: var(--secretary);
   }
 }
 @media (max-width: 768px) {
+}
+@media (max-width: 767px) {
+  .popup-overlay {
+    display: grid;
+    place-items: start;
+  }
 }
 @media (max-width: 480px) {
   .topbtn {
