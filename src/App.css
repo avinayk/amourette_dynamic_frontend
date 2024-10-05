@@ -829,7 +829,7 @@ select {
   overflow: hidden;  
   text-overflow: ellipsis; 
   white-space: nowrap; 
-  width: 200px;  
+  width: fit-content;  
 }
 .linehr{
   border-top: 1px solid #fff;
