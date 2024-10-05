@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { BsCloudUpload } from "react-icons/bs";
 import { Header } from "../components/Header";
+import { Footer } from "../components/Footer";
 
 function Register() {
   // State to track visibility
@@ -143,6 +144,7 @@ function Register() {
           </div>
         </div>
       </section>
+      <Footer/>
     </>
   );
 }

@@ -1,14 +1,15 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
+import "./index.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"; // Import Routes
-
-import { Footer } from "./components/Footer";
 
 import Home from "./pages/Home";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Editprofile from "./pages/Editprofile";
 import Membership from "./pages/Membership";
+// import Search from "./pages/Search";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   return (
@@ -20,8 +21,9 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/editprofile" element={<Editprofile />} />
           <Route path="/membership" element={<Membership />} />
+          {/* <Route path="/search" element={<Search />} /> */}
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
-        <Footer />
       </Router>
     </div>
   );

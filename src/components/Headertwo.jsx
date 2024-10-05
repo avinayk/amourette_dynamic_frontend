@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 
 import {UpgradeMembership} from '../components/UpgradeMembership'; 
@@ -48,12 +48,29 @@ const closePopup = () => {
 
 const [activeMenu, setActiveMenu] = useState(null);
 
+const [isSticky, setIsSticky] = useState(false);
 
+const handleScroll = () => {
+  if (window.scrollY > 0) {
+    setIsSticky(true); // Set sticky if scrolled down
+  } else {
+    setIsSticky(false); // Remove sticky if at the top
+  }
+};
+
+useEffect(() => {
+  window.addEventListener('scroll', handleScroll);
+  
+  // Cleanup the event listener on component unmount
+  return () => {
+    window.removeEventListener('scroll', handleScroll);
+  };
+}, []);
 
     
   return (
     <>
-      <header className="header">
+      <header  className={`header ${isSticky ? 'sticky' : ''}`}>
         <div className="container-lg">
           <div className="row gy-3 align-items-center">
             <div className="col-md-3">
