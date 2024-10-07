@@ -8,8 +8,7 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Editprofile from "./pages/Editprofile";
 import Membership from "./pages/Membership";
-// import Search from "./pages/Search";
-import Dashboard from "./pages/Dashboard";
+import Search from "./pages/Search";
 
 function App() {
   return (
@@ -21,8 +20,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/editprofile" element={<Editprofile />} />
           <Route path="/membership" element={<Membership />} />
-          {/* <Route path="/search" element={<Search />} /> */}
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/search" element={<Search />} />
         </Routes>
       </Router>
     </div>
