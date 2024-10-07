@@ -4,10 +4,16 @@ import { GiCheckMark } from "react-icons/gi";
 
 export const UpgradeMembership = ({ isOpen, onClose, children }) => {
   if (!isOpen) return null;
+  const handleOverlayClick = (e) => {
+    // Check if the clicked element is the overlay
+    if (e.target.classList.contains("popup-overlay")) {
+      onClose(); // Close the popup if the overlay is clicked
+    }
+  };
   return (
     <>
-      <div className="popup-overlay">
-        <div className="popup-content">
+      <div className="popup-overlay"  onClick={handleOverlayClick}>
+        <div className="popup-content col-12 col-md-7 px-5">
           <button className="close-button" onClick={onClose}>
             &times; {/* Close button */}
           </button>

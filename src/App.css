@@ -94,6 +94,8 @@ body {
 header {
   background: var(--lightblack);
   padding: 10px 0;
+  position: relative;
+  z-index: 998;
 }
 .toplogo {
   width: 200px;
@@ -492,7 +494,7 @@ select {
   display: block;
   background: transparent;
 }
-.savebtn:focus{
+.savebtn:focus {
   border: 2px solid var(--primary);
 }
 .savebtn:hover {
@@ -591,9 +593,7 @@ select {
 }
 
 .popup-content {
-  width: 80%; /* Adjust width as needed */
   position: relative;
-  max-width: 1000px;
   padding: 15px;
 }
 
@@ -603,7 +603,7 @@ select {
   font-size: 40px;
   cursor: pointer;
   position: absolute;
-  right: -10px;
+  right: 0px;
   top: -10px;
   color: #fff;
 }
@@ -802,87 +802,374 @@ select {
   color: #fff;
   font-size: 16px;
 }
-.dashbox{
+.dashbox {
   padding: 50px 0;
 }
-.sidefixedbox{
+.sidefixedbox {
   top: 118px;
+  z-index: 33;
 }
-.listoficons:hover img, .listoficons:hover h4, .listoficons :hover {
+.listoficons:hover img,
+.listoficons:hover h4,
+.listoficons :hover {
   opacity: 0.8;
 }
-.listoficons .userpic{
+.listoficons .userpic {
   width: 50px;
   aspect-ratio: 1;
   background: #1b1b1b;
 }
-.listoficons h4{
+.listoficons h4 {
   font-size: 14px;
   color: #fff;
   text-transform: capitalize;
 }
-.grouptitle{
+.grouptitle {
   font-size: 20px;
   color: #a5a7a7;
 }
-.groupmy .listoficons h4{
-  overflow: hidden;  
-  text-overflow: ellipsis; 
-  white-space: nowrap; 
-  width: fit-content;  
+.groupmy .listoficons h4 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 120px;
 }
-.linehr{
+.linehr {
   border-top: 1px solid #fff;
 }
-.listoficons h6{
+.listoficons h6 {
   color: #fff;
   font-size: 12px;
 }
-.visitscroll{
+.visitscroll {
   height: 240px;
   overflow-y: auto;
 }
-.viewmore a{
+.viewmore a {
   color: #fff;
   font-size: 16px;
   font-weight: 600;
 }
-.viewmore a:hover{
+.viewmore a:hover {
   color: var(--secretary);
 }
-.listnumber h4{
+.listnumber h4 {
   font-size: 16px;
   color: #fff;
 }
-.postblock{
+.postblock {
   background: #282828;
   border-radius: 30px;
   overflow: hidden;
   padding: 4px;
 }
-.postblock h4{
+.postblock h4 {
   color: #fff;
   font-size: 16px;
 }
-.postblock h5{
+.postblock h5 {
   color: #fff;
   font-size: 14px;
 }
-.urpic{
+.urpic {
   width: 50px;
   aspect-ratio: 1;
 }
-.btnoption{
+.btnoption {
   background: transparent;
   border: none;
   color: #fff;
 }
-.imgblock{
+.imgblock {
   aspect-ratio: 16/9;
 }
-.leftscrollbox{
+.leftscrollbox {
   height: 290px;
   overflow-y: auto;
+}
+
+.searchleftfilter h2 {
+  font-size: 30px;
+  color: #fff;
+  text-transform: capitalize;
+}
+.filtersearch input {
+  background: #1b1b1b;
+  color: #fff;
+  font-size: 16px;
+  border-radius: 100px;
+  padding: 10px 15px;
+  width: 100%;
+  border: none;
+}
+.filterlist{
+  background: #121212;
+  border: none;
+  border-radius: 10px;
+  padding: 4px;
+}
+.filterlist:hover, .filterlist.active{
+  background: #212121;
+}
+.filterlist .eventicon{
+  width: 50px;
+}
+.filterlist h3{
+  color: #fff;
+  font-size: 16px;
+  text-align: left;
+}
+.newebentbtn button{
+  text-transform: uppercase;
+  font-size: 16px;
+  color: #fff;
+  text-align: center;
+  border: none;
+  border-radius: 8px;
+  padding: 6px;
+  display: block;
+  width: 100%;
+  background: var(--primary);
+}
+.newebentbtn a:hover,
+.newebentbtn button:hover {
+  background: var(--primary);
+  color: #fff;
+}
+.categorieslist h6{
+  color: #a5a7a7;
+  font-size: 18px;
+}
+.categorieslist .listbox label{
+  font-size: 16px;
+  color: #fff;
+}
+.eventname{
+  background: #212121;
+  border-radius: 10px;
+  padding: 15px;
+}
+.eventname .eventpic{
+  width: 100px;
+  aspect-ratio: 1;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.eventname h3{
+  color: #fff;
+  font-size: 14px;
+}
+.eventname h4{
+  color: #fff;
+  font-size: 18px;
+}
+.eventname h5{
+  color: #fff;
+  font-size: 14px;
+}
+.eventname h6{
+  color: #fff;
+  font-size: 14px;
+  margin-top: auto;
+}
+.inbtns .btn{
+  text-transform: uppercase;
+  font-size: 14px;
+  color: #fff;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  padding: 8px 20px;
+  text-align: center;
+}
+.inbtns .sebtn{
+  border:2px solid var(--primary)
+}
+.inbtns .prbtn{
+border:2px solid var(--secretary)
+}
+.inbtns .sebtn:hover{
+  border:2px solid var(--primary);
+  background:  var(--primary);
+}
+.inbtns .prbtn:hover{
+border:2px solid var(--secretary);
+background: var(--secretary);;
+}
+.evleft{
+  top: 146px;
+  z-index: 43;
+}
+.evname{
+  background: #212121;
+  border-radius: 10px;
+  padding: 25px;
+}
+.eventtitle {
+  border-bottom: 2px solid #212121;
+}
+.eventtitle h1{
+  color: #fff;
+  font-size: 24px;
+}
+.evname{
+  background: #212121;
+  border-radius: 10px;
+  padding: 20px;
+}
+.evname .evephoto{
+  width: 50px;
+  aspect-ratio: 1;
+}
+.whatthink{
+  background: #3c3c3c;
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+.whatthink h4{
+  color: #fff;
+  font-size: 16px;
+}
+.addphotothink h4{
+  font-size: 14px;
+  color: #fff;
+}
+.iconphoto{
+  width: 30px;
+}
+.evettimeheaing h4{
+  font-size: 16px;
+  color: #fff;
+}
+.evettimeheaing h5{
+  color: #fff;
+  font-size: 14px;
+}
+.contpost p{
+  color: #fff;
+  font-size: 14px;
+}
+.postchatheart .btn{
+  width: 25px;
+  padding: 0
+}
+.postimgfull{
+  aspect-ratio: 16/9;
+}
+.posttopbtns .btn{
+  text-transform: uppercase;
+  font-size: 14px;
+  color: #fff;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  padding: 8px 20px;
+  text-align: center;
+  min-width: 200px;
+}
+.posttopbtns .sebtn{
+  border:2px solid var(--primary);
+}
+.posttopbtns .prbtn{
+border:2px solid var(--secretary);
+}
+.posttopbtns .redbtn{
+  border:2px solid #c51b54;
+}
+
+.posttopbtns .sebtn:hover{
+  border:2px solid var(--primary);
+  background:  var(--primary);
+  color: #000;
+}
+.posttopbtns .prbtn:hover{
+border:2px solid var(--secretary);
+background: var(--secretary);
+color: #000;
+}
+.posttopbtns .redbtn:hover{
+border:2px solid #c51b54;
+background: #c51b54;
+}
+.deticontext .pubimg{
+  width: 40px;
+}
+.deticontext h5{
+  color: #fff;
+  font-size: 14px;
+}
+.detailbox{
+  background: #212121;
+  padding: 20px;
+  border-radius: 20px;
+}
+.detailbox h3{
+  color: #a5a7a7;
+  font-size: 20px;
+}
+.detailbox  p{
+  color: #fff;
+  font-size: 14px;
+}
+.vmore a{
+  color: #fff;
+  text-transform: uppercase;
+  text-decoration: underline;
+  font-size: 16px;
+  font-weight: 600;
+}
+.memperson{
+  aspect-ratio: 9/11;
+}
+.cneventup{
+  background: #212121;
+  border-radius: 20px;
+  padding: 20px;
+}
+.cneventup h3{
+  color: #fff;
+  font-size: 20px;
+  text-transform: capitalize;
+}
+.cneventup input[type="text"], .cneventup input[type=""], .cneventup textarea{
+  background: #3c3c3c;
+  color: #fff;
+  font-size: 16px;
+  border-radius: 6px;
+  width: 100%;
+  border: none;
+  padding: 10px 15px;
+}
+.cneventup .listbox .cbox{
+  color: #fff;
+  font-size: 14px;
+}
+.cneventup button{
+  text-transform: uppercase;
+  font-size: 16px;
+  color: #fff;
+  text-align: center;
+  border: none;
+  border-radius: 8px;
+  padding: 6px;
+  display: block;
+  width: 100%;
+  background: var(--primary);
+}
+.cneventup a:hover,
+.cneventup button:hover {
+  background: var(--primary);
+  color: #fff;
+}
+.datetimeline .stextlabel{
+  position: absolute;
+  top: 0;
+  color: #fff;
+  font-size: 12px;
+  left: 10px;
+  top: 4px;
+  z-index: 3;
+}
+.cneventup .datetimeline input{
+  padding-top: 20px ;
 }
 @media (max-width: 991px) {
   .member-tabs {
@@ -911,4 +1198,3 @@ select {
     width: 140px;
   }
 }
-
