@@ -3,8 +3,6 @@ import "./App.css";
 import "./index.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"; // Import Routes
 
-import { Footer } from "./components/Footer";
-
 import Home from "./pages/Home";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
@@ -24,7 +22,6 @@ function App() {
           <Route path="/membership" element={<Membership />} />
           <Route path="/search" element={<Search />} />
         </Routes>
-        <Footer />
       </Router>
     </div>
   );

@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import {Header} from "../components/Header";
+import {Footer} from "../components/Footer";
 import icon1 from "../assets/images/icon1.png";
 import icon2 from "../assets/images/icon2.png";
 import icon3 from "../assets/images/icon3.png";
@@ -109,6 +110,7 @@ function Home() {
           </div>
         </div>
       </section>
+      <Footer/>
     </>
   );
 }

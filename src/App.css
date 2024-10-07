@@ -4,6 +4,12 @@
   --lightblack: #1b1b1b;
 }
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+.header.sticky {
+  position: sticky; /* Make it sticky */
+  top: 0; /* Stick to the top */
+  z-index: 998; /* Ensures the header stays above other elements */
+}
+
 input,
 textarea,
 select,
@@ -486,6 +492,9 @@ select {
   display: block;
   background: transparent;
 }
+.savebtn:focus{
+  border: 2px solid var(--primary);
+}
 .savebtn:hover {
   background: var(--primary);
   color: #fff;
@@ -507,11 +516,11 @@ select {
   font-size: 16px;
   border: none;
 }
-.formlook .accordion .accordion__button {
+.accordion .accordion__button {
   background: #121212 !important;
   position: relative;
 }
-.formlook .accordion .accordion__button::before {
+.accordion .accordion__button::before {
   right: 0;
   left: auto;
   position: absolute;
@@ -519,10 +528,10 @@ select {
   color: #fff;
   transform: rotate(45deg);
 }
-.formlook .accordion .accordion__button[aria-expanded="true"]::before {
+.accordion .accordion__button[aria-expanded="true"]::before {
   transform: rotate(-135deg);
 }
-.formlook .accordion .accordion__item {
+.accordion .accordion__item {
   border-bottom: 1px solid #fff;
 }
 .formlook .accordion .accordion__item .acciconimg {
@@ -662,6 +671,7 @@ select {
 }
 .member-tabs .react-tabs__tab-list {
   width: 300px;
+  flex-shrink: 0;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -756,6 +766,123 @@ select {
 .shipbtns .celbtn:hover {
   background: #a91d4a;
   color: #000;
+}
+.blockv {
+  background: #212121;
+  border-radius: 10px;
+  padding: 20px;
+}
+.blockv h3 {
+  color: #fff;
+  font-size: 20px;
+}
+.blockv h4 {
+  color: var(--secretary);
+  font-size: 18px;
+}
+.blockv .listbox label {
+  font-size: 14px;
+  color: #fff;
+}
+.blockv p {
+  font-size: 14px;
+  color: #fff;
+}
+.clicklink {
+  text-decoration: underline;
+  color: var(--secretary);
+  font-size: 16px;
+  font-weight: 600;
+}
+.faqblock h4 {
+  color: #fff;
+  font-size: 20px;
+}
+.faqblock p {
+  color: #fff;
+  font-size: 16px;
+}
+.dashbox{
+  padding: 50px 0;
+}
+.sidefixedbox{
+  top: 118px;
+}
+.listoficons:hover img, .listoficons:hover h4, .listoficons :hover {
+  opacity: 0.8;
+}
+.listoficons .userpic{
+  width: 50px;
+  aspect-ratio: 1;
+  background: #1b1b1b;
+}
+.listoficons h4{
+  font-size: 14px;
+  color: #fff;
+  text-transform: capitalize;
+}
+.grouptitle{
+  font-size: 20px;
+  color: #a5a7a7;
+}
+.groupmy .listoficons h4{
+  overflow: hidden;  
+  text-overflow: ellipsis; 
+  white-space: nowrap; 
+  width: fit-content;  
+}
+.linehr{
+  border-top: 1px solid #fff;
+}
+.listoficons h6{
+  color: #fff;
+  font-size: 12px;
+}
+.visitscroll{
+  height: 240px;
+  overflow-y: auto;
+}
+.viewmore a{
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+}
+.viewmore a:hover{
+  color: var(--secretary);
+}
+.listnumber h4{
+  font-size: 16px;
+  color: #fff;
+}
+.postblock{
+  background: #282828;
+  border-radius: 30px;
+  overflow: hidden;
+  padding: 4px;
+}
+.postblock h4{
+  color: #fff;
+  font-size: 16px;
+}
+.postblock h5{
+  color: #fff;
+  font-size: 14px;
+}
+.urpic{
+  width: 50px;
+  aspect-ratio: 1;
+}
+.btnoption{
+  background: transparent;
+  border: none;
+  color: #fff;
+}
+.imgblock{
+  aspect-ratio: 16/9;
+}
+.leftscrollbox{
+  height: 290px;
+  overflow-y: auto;
 }
 @media (max-width: 991px) {
   .member-tabs {
