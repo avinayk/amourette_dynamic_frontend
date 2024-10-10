@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-import {UpgradeMembership} from '../components/UpgradeMembership'; 
-
-
+import { UpgradeMembership } from "../components/UpgradeMembership";
 
 import logo from "../assets/images/logo.png";
 import icon1 from "../assets/images/menuicon.png";
@@ -24,53 +22,49 @@ import se3 from "../assets/images/se3.png";
 function Headertwo() {
   // State to toggle menubox visibility
 
-
   // Function to toggle menu visibility
   const toggleMenu = (menuId) => {
     setActiveMenu(activeMenu === menuId ? null : menuId);
   };
-
-
 
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   const openPopup = () => {
     setIsPopupOpen(true);
     // Disable body scroll when popup is open
-    document.body.style.overflowY = 'hidden';
-};
+    document.body.style.overflowY = "hidden";
+  };
 
-const closePopup = () => {
+  const closePopup = () => {
     setIsPopupOpen(false);
     // Re-enable body scroll when popup is closed
-    document.body.style.overflowY = 'auto';
-};
-
-const [activeMenu, setActiveMenu] = useState(null);
-
-const [isSticky, setIsSticky] = useState(false);
-
-const handleScroll = () => {
-  if (window.scrollY > 0) {
-    setIsSticky(true); // Set sticky if scrolled down
-  } else {
-    setIsSticky(false); // Remove sticky if at the top
-  }
-};
-
-useEffect(() => {
-  window.addEventListener('scroll', handleScroll);
-  
-  // Cleanup the event listener on component unmount
-  return () => {
-    window.removeEventListener('scroll', handleScroll);
+    document.body.style.overflowY = "auto";
   };
-}, []);
 
-    
+  const [activeMenu, setActiveMenu] = useState(null);
+
+  const [isSticky, setIsSticky] = useState(false);
+
+  const handleScroll = () => {
+    if (window.scrollY > 0) {
+      setIsSticky(true); // Set sticky if scrolled down
+    } else {
+      setIsSticky(false); // Remove sticky if at the top
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    // Cleanup the event listener on component unmount
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <>
-      <header  className={`header ${isSticky ? 'sticky' : ''}`}>
+      <header className={`header ${isSticky ? "sticky" : ""}`}>
         <div className="container-lg">
           <div className="row gy-3 align-items-center">
             <div className="col-md-3">
@@ -92,14 +86,18 @@ useEffect(() => {
                     <div className="">
                       <button
                         type="button"
-                      className={`topmenu ${activeMenu === "menu1" ? "active" : ""}`}
+                        className={`topmenu ${
+                          activeMenu === "menu1" ? "active" : ""
+                        }`}
                         onClick={() => toggleMenu("menu1")}
                       >
                         <img src={icon1} alt="userp" />
                       </button>
                       <div
                         className="menubox"
-                        style={{ display: activeMenu === "menu1" ? "block" : "none" }}
+                        style={{
+                          display: activeMenu === "menu1" ? "block" : "none",
+                        }}
                       >
                         <div className="d-flex flex-column gap-4 ">
                           <h3>Menu</h3>
@@ -190,107 +188,111 @@ useEffect(() => {
                     <div className="">
                       <button
                         type="button"
-                      className={`topmenu ${activeMenu === "menu2" ? "active" : ""}`}
+                        className={`topmenu ${
+                          activeMenu === "menu2" ? "active" : ""
+                        }`}
                         onClick={() => toggleMenu("menu2")}
                       >
                         <img src={icon2} alt="userp" />
                       </button>
                       <div
                         className="menubox"
-                        style={{ display: activeMenu === "menu2" ? "block" : "none" }}
+                        style={{
+                          display: activeMenu === "menu2" ? "block" : "none",
+                        }}
                       >
                         <div className="d-flex flex-column gap-4 ">
                           <h3>Notification</h3>
                           <div className="d-flex flex-column gap-3">
-                          <div className="d-flex flex-column gap-3 scrollyover">
-                            <Link to="/" className="d-flex gap-3">
-                              <div className="flex-shrink-0">
-                                <div className="iconmenu ofit rounded-circle overflow-hidden">
-                                  <img src={pe1} alt="userpic" />
+                            <div className="d-flex flex-column gap-3 scrollyover">
+                              <Link to="/" className="d-flex gap-3">
+                                <div className="flex-shrink-0">
+                                  <div className="iconmenu ofit rounded-circle overflow-hidden">
+                                    <img src={pe1} alt="userpic" />
+                                  </div>
                                 </div>
-                              </div>
-                              <div className="flex-grow-1">
-                                <h4>Username just posted an image</h4>
-                                <p className="timeago">Time ago</p>
-                              </div>
-                            </Link>
-                            <Link to="/" className="d-flex gap-3">
-                              <div className="flex-shrink-0">
-                                <div className="iconmenu ofit rounded-circle overflow-hidden">
-                                  <img src={pe1} alt="userpic" />
+                                <div className="flex-grow-1">
+                                  <h4>Username just posted an image</h4>
+                                  <p className="timeago">Time ago</p>
                                 </div>
-                              </div>
-                              <div className="flex-grow-1">
-                                <h4>Username shared a post</h4>
-                                <p className="timeago">Time ago</p>
-                              </div>
-                            </Link>
-                            <Link to="/" className="d-flex gap-3">
-                              <div className="flex-shrink-0">
-                                <div className="iconmenu ofit rounded-circle overflow-hidden">
-                                  <img src={pe1} alt="userpic" />
+                              </Link>
+                              <Link to="/" className="d-flex gap-3">
+                                <div className="flex-shrink-0">
+                                  <div className="iconmenu ofit rounded-circle overflow-hidden">
+                                    <img src={pe1} alt="userpic" />
+                                  </div>
                                 </div>
-                              </div>
-                              <div className="flex-grow-1">
-                                <h4>Username just created an event</h4>
-                                <p className="timeago">Time ago</p>
-                              </div>
-                            </Link>
-                            <Link to="/" className="d-flex gap-3">
-                              <div className="flex-shrink-0">
-                                <div className="iconmenu ofit rounded-circle overflow-hidden">
-                                  <img src={pe1} alt="userpic" />
+                                <div className="flex-grow-1">
+                                  <h4>Username shared a post</h4>
+                                  <p className="timeago">Time ago</p>
                                 </div>
-                              </div>
-                              <div className="flex-grow-1">
-                                <h4>Username just created an group</h4>
-                                <p className="timeago">Time ago</p>
-                              </div>
-                            </Link>
-                            <Link to="/" className="d-flex gap-3">
-                              <div className="flex-shrink-0">
-                                <div className="iconmenu ofit rounded-circle overflow-hidden">
-                                  <img src={pe1} alt="userpic" />
+                              </Link>
+                              <Link to="/" className="d-flex gap-3">
+                                <div className="flex-shrink-0">
+                                  <div className="iconmenu ofit rounded-circle overflow-hidden">
+                                    <img src={pe1} alt="userpic" />
+                                  </div>
                                 </div>
-                              </div>
-                              <div className="flex-grow-1">
-                                <h4>Username just posted an image</h4>
-                                <p className="timeago">Time ago</p>
-                              </div>
-                            </Link>
-                            <Link to="/" className="d-flex gap-3">
-                              <div className="flex-shrink-0">
-                                <div className="iconmenu ofit rounded-circle overflow-hidden">
-                                  <img src={pe1} alt="userpic" />
+                                <div className="flex-grow-1">
+                                  <h4>Username just created an event</h4>
+                                  <p className="timeago">Time ago</p>
                                 </div>
-                              </div>
-                              <div className="flex-grow-1">
-                                <h4>Username shared a post</h4>
-                                <p className="timeago">Time ago</p>
-                              </div>
-                            </Link>
-                            <Link to="/" className="d-flex gap-3">
-                              <div className="flex-shrink-0">
-                                <div className="iconmenu ofit rounded-circle overflow-hidden">
-                                  <img src={pe1} alt="userpic" />
+                              </Link>
+                              <Link to="/" className="d-flex gap-3">
+                                <div className="flex-shrink-0">
+                                  <div className="iconmenu ofit rounded-circle overflow-hidden">
+                                    <img src={pe1} alt="userpic" />
+                                  </div>
                                 </div>
-                              </div>
-                              <div className="flex-grow-1">
-                                <h4>Username just created an event</h4>
-                                <p className="timeago">Time ago</p>
-                              </div>
-                            </Link>
-                            <Link to="/" className="d-flex gap-3">
-                              <div className="flex-shrink-0">
-                                <div className="iconmenu ofit rounded-circle overflow-hidden">
-                                  <img src={pe1} alt="userpic" />
+                                <div className="flex-grow-1">
+                                  <h4>Username just created an group</h4>
+                                  <p className="timeago">Time ago</p>
                                 </div>
-                              </div>
-                              <div className="flex-grow-1">
-                                <h4>Username just created an group</h4>
-                                <p className="timeago">Time ago</p>
-                              </div>
-                            </Link>
+                              </Link>
+                              <Link to="/" className="d-flex gap-3">
+                                <div className="flex-shrink-0">
+                                  <div className="iconmenu ofit rounded-circle overflow-hidden">
+                                    <img src={pe1} alt="userpic" />
+                                  </div>
+                                </div>
+                                <div className="flex-grow-1">
+                                  <h4>Username just posted an image</h4>
+                                  <p className="timeago">Time ago</p>
+                                </div>
+                              </Link>
+                              <Link to="/" className="d-flex gap-3">
+                                <div className="flex-shrink-0">
+                                  <div className="iconmenu ofit rounded-circle overflow-hidden">
+                                    <img src={pe1} alt="userpic" />
+                                  </div>
+                                </div>
+                                <div className="flex-grow-1">
+                                  <h4>Username shared a post</h4>
+                                  <p className="timeago">Time ago</p>
+                                </div>
+                              </Link>
+                              <Link to="/" className="d-flex gap-3">
+                                <div className="flex-shrink-0">
+                                  <div className="iconmenu ofit rounded-circle overflow-hidden">
+                                    <img src={pe1} alt="userpic" />
+                                  </div>
+                                </div>
+                                <div className="flex-grow-1">
+                                  <h4>Username just created an event</h4>
+                                  <p className="timeago">Time ago</p>
+                                </div>
+                              </Link>
+                              <Link to="/" className="d-flex gap-3">
+                                <div className="flex-shrink-0">
+                                  <div className="iconmenu ofit rounded-circle overflow-hidden">
+                                    <img src={pe1} alt="userpic" />
+                                  </div>
+                                </div>
+                                <div className="flex-grow-1">
+                                  <h4>Username just created an group</h4>
+                                  <p className="timeago">Time ago</p>
+                                </div>
+                              </Link>
                             </div>
                             <div className="d-block morebtn">
                               <Link to="/">View more</Link>
@@ -302,14 +304,18 @@ useEffect(() => {
                     <div className="">
                       <button
                         type="button"
-                      className={`topmenu ${activeMenu === "menu3" ? "active" : ""}`}
+                        className={`topmenu ${
+                          activeMenu === "menu3" ? "active" : ""
+                        }`}
                         onClick={() => toggleMenu("menu3")}
                       >
                         <img src={icon3} alt="userp" />
                       </button>
                       <div
                         className="menubox"
-                        style={{ display: activeMenu === "menu3" ? "block" : "none" }}
+                        style={{
+                          display: activeMenu === "menu3" ? "block" : "none",
+                        }}
                       >
                         <div className="d-flex flex-column gap-4 ">
                           <h3>Inbox</h3>
@@ -322,187 +328,187 @@ useEffect(() => {
                             </form>
                           </div>
                           <div className="d-flex flex-column gap-3">
-                          <div className="d-flex flex-column gap-3 scrollyover">
-                            <Link to="/" className="d-flex gap-3">
-                              <div className="flex-shrink-0">
-                                <div className="iconmenu ofit rounded-circle overflow-hidden">
-                                  <img src={pe1} alt="userpic" />
+                            <div className="d-flex flex-column gap-3 scrollyover">
+                              <Link to="/" className="d-flex gap-3">
+                                <div className="flex-shrink-0">
+                                  <div className="iconmenu ofit rounded-circle overflow-hidden">
+                                    <img src={pe1} alt="userpic" />
+                                  </div>
                                 </div>
-                              </div>
-                              <div className="flex-grow-1">
-                                <div className="d-flex justify-content-between">
-                                  <h4>Username</h4>
-                                  <p className="">Time ago</p>
+                                <div className="flex-grow-1">
+                                  <div className="d-flex justify-content-between">
+                                    <h4>Username</h4>
+                                    <p className="">Time ago</p>
+                                  </div>
+                                  <h6 className="minimsg">
+                                    Amet non eiusmod ea labore amet est esse
+                                    tempor cupidatat minim nulla commodo
+                                    reprehenderit exercitation.
+                                  </h6>
                                 </div>
-                                <h6 className="minimsg">
-                                  Amet non eiusmod ea labore amet est esse
-                                  tempor cupidatat minim nulla commodo
-                                  reprehenderit exercitation.
-                                </h6>
-                              </div>
-                            </Link>
-                            <Link to="/" className="d-flex gap-3">
-                              <div className="flex-shrink-0">
-                                <div className="iconmenu ofit rounded-circle overflow-hidden">
-                                  <img src={pe1} alt="userpic" />
+                              </Link>
+                              <Link to="/" className="d-flex gap-3">
+                                <div className="flex-shrink-0">
+                                  <div className="iconmenu ofit rounded-circle overflow-hidden">
+                                    <img src={pe1} alt="userpic" />
+                                  </div>
                                 </div>
-                              </div>
-                              <div className="flex-grow-1">
-                                <div className="d-flex justify-content-between">
-                                  <h4>Username</h4>
-                                  <p className="">Time ago</p>
+                                <div className="flex-grow-1">
+                                  <div className="d-flex justify-content-between">
+                                    <h4>Username</h4>
+                                    <p className="">Time ago</p>
+                                  </div>
+                                  <h6 className="minimsg">
+                                    Amet non eiusmod ea labore amet est esse
+                                    tempor cupidatat minim nulla commodo
+                                    reprehenderit exercitation.
+                                  </h6>
                                 </div>
-                                <h6 className="minimsg">
-                                  Amet non eiusmod ea labore amet est esse
-                                  tempor cupidatat minim nulla commodo
-                                  reprehenderit exercitation.
-                                </h6>
-                              </div>
-                            </Link>
-                            <Link to="/" className="d-flex gap-3">
-                              <div className="flex-shrink-0">
-                                <div className="iconmenu ofit rounded-circle overflow-hidden">
-                                  <img src={pe1} alt="userpic" />
+                              </Link>
+                              <Link to="/" className="d-flex gap-3">
+                                <div className="flex-shrink-0">
+                                  <div className="iconmenu ofit rounded-circle overflow-hidden">
+                                    <img src={pe1} alt="userpic" />
+                                  </div>
                                 </div>
-                              </div>
-                              <div className="flex-grow-1">
-                                <div className="d-flex justify-content-between">
-                                  <h4>Username</h4>
-                                  <p className="">Time ago</p>
+                                <div className="flex-grow-1">
+                                  <div className="d-flex justify-content-between">
+                                    <h4>Username</h4>
+                                    <p className="">Time ago</p>
+                                  </div>
+                                  <h6 className="minimsg">
+                                    Amet non eiusmod ea labore amet est esse
+                                    tempor cupidatat minim nulla commodo
+                                    reprehenderit exercitation.
+                                  </h6>
                                 </div>
-                                <h6 className="minimsg">
-                                  Amet non eiusmod ea labore amet est esse
-                                  tempor cupidatat minim nulla commodo
-                                  reprehenderit exercitation.
-                                </h6>
-                              </div>
-                            </Link>
-                            <Link to="/" className="d-flex gap-3">
-                              <div className="flex-shrink-0">
-                                <div className="iconmenu ofit rounded-circle overflow-hidden">
-                                  <img src={pe1} alt="userpic" />
+                              </Link>
+                              <Link to="/" className="d-flex gap-3">
+                                <div className="flex-shrink-0">
+                                  <div className="iconmenu ofit rounded-circle overflow-hidden">
+                                    <img src={pe1} alt="userpic" />
+                                  </div>
                                 </div>
-                              </div>
-                              <div className="flex-grow-1">
-                                <div className="d-flex justify-content-between">
-                                  <h4>Username</h4>
-                                  <p className="">Time ago</p>
+                                <div className="flex-grow-1">
+                                  <div className="d-flex justify-content-between">
+                                    <h4>Username</h4>
+                                    <p className="">Time ago</p>
+                                  </div>
+                                  <h6 className="minimsg">
+                                    Amet non eiusmod ea labore amet est esse
+                                    tempor cupidatat minim nulla commodo
+                                    reprehenderit exercitation.
+                                  </h6>
                                 </div>
-                                <h6 className="minimsg">
-                                  Amet non eiusmod ea labore amet est esse
-                                  tempor cupidatat minim nulla commodo
-                                  reprehenderit exercitation.
-                                </h6>
-                              </div>
-                            </Link>
-                            <Link to="/" className="d-flex gap-3">
-                              <div className="flex-shrink-0">
-                                <div className="iconmenu ofit rounded-circle overflow-hidden">
-                                  <img src={pe1} alt="userpic" />
+                              </Link>
+                              <Link to="/" className="d-flex gap-3">
+                                <div className="flex-shrink-0">
+                                  <div className="iconmenu ofit rounded-circle overflow-hidden">
+                                    <img src={pe1} alt="userpic" />
+                                  </div>
                                 </div>
-                              </div>
-                              <div className="flex-grow-1">
-                                <div className="d-flex justify-content-between">
-                                  <h4>Username</h4>
-                                  <p className="">Time ago</p>
+                                <div className="flex-grow-1">
+                                  <div className="d-flex justify-content-between">
+                                    <h4>Username</h4>
+                                    <p className="">Time ago</p>
+                                  </div>
+                                  <h6 className="minimsg">
+                                    Amet non eiusmod ea labore amet est esse
+                                    tempor cupidatat minim nulla commodo
+                                    reprehenderit exercitation.
+                                  </h6>
                                 </div>
-                                <h6 className="minimsg">
-                                  Amet non eiusmod ea labore amet est esse
-                                  tempor cupidatat minim nulla commodo
-                                  reprehenderit exercitation.
-                                </h6>
-                              </div>
-                            </Link>
-                            <Link to="/" className="d-flex gap-3">
-                              <div className="flex-shrink-0">
-                                <div className="iconmenu ofit rounded-circle overflow-hidden">
-                                  <img src={pe1} alt="userpic" />
+                              </Link>
+                              <Link to="/" className="d-flex gap-3">
+                                <div className="flex-shrink-0">
+                                  <div className="iconmenu ofit rounded-circle overflow-hidden">
+                                    <img src={pe1} alt="userpic" />
+                                  </div>
                                 </div>
-                              </div>
-                              <div className="flex-grow-1">
-                                <div className="d-flex justify-content-between">
-                                  <h4>Username</h4>
-                                  <p className="">Time ago</p>
+                                <div className="flex-grow-1">
+                                  <div className="d-flex justify-content-between">
+                                    <h4>Username</h4>
+                                    <p className="">Time ago</p>
+                                  </div>
+                                  <h6 className="minimsg">
+                                    Amet non eiusmod ea labore amet est esse
+                                    tempor cupidatat minim nulla commodo
+                                    reprehenderit exercitation.
+                                  </h6>
                                 </div>
-                                <h6 className="minimsg">
-                                  Amet non eiusmod ea labore amet est esse
-                                  tempor cupidatat minim nulla commodo
-                                  reprehenderit exercitation.
-                                </h6>
-                              </div>
-                            </Link>
-                            <Link to="/" className="d-flex gap-3">
-                              <div className="flex-shrink-0">
-                                <div className="iconmenu ofit rounded-circle overflow-hidden">
-                                  <img src={pe1} alt="userpic" />
+                              </Link>
+                              <Link to="/" className="d-flex gap-3">
+                                <div className="flex-shrink-0">
+                                  <div className="iconmenu ofit rounded-circle overflow-hidden">
+                                    <img src={pe1} alt="userpic" />
+                                  </div>
                                 </div>
-                              </div>
-                              <div className="flex-grow-1">
-                                <div className="d-flex justify-content-between">
-                                  <h4>Username</h4>
-                                  <p className="">Time ago</p>
+                                <div className="flex-grow-1">
+                                  <div className="d-flex justify-content-between">
+                                    <h4>Username</h4>
+                                    <p className="">Time ago</p>
+                                  </div>
+                                  <h6 className="minimsg">
+                                    Amet non eiusmod ea labore amet est esse
+                                    tempor cupidatat minim nulla commodo
+                                    reprehenderit exercitation.
+                                  </h6>
                                 </div>
-                                <h6 className="minimsg">
-                                  Amet non eiusmod ea labore amet est esse
-                                  tempor cupidatat minim nulla commodo
-                                  reprehenderit exercitation.
-                                </h6>
-                              </div>
-                            </Link>
-                            <Link to="/" className="d-flex gap-3">
-                              <div className="flex-shrink-0">
-                                <div className="iconmenu ofit rounded-circle overflow-hidden">
-                                  <img src={pe1} alt="userpic" />
+                              </Link>
+                              <Link to="/" className="d-flex gap-3">
+                                <div className="flex-shrink-0">
+                                  <div className="iconmenu ofit rounded-circle overflow-hidden">
+                                    <img src={pe1} alt="userpic" />
+                                  </div>
                                 </div>
-                              </div>
-                              <div className="flex-grow-1">
-                                <div className="d-flex justify-content-between">
-                                  <h4>Username</h4>
-                                  <p className="">Time ago</p>
+                                <div className="flex-grow-1">
+                                  <div className="d-flex justify-content-between">
+                                    <h4>Username</h4>
+                                    <p className="">Time ago</p>
+                                  </div>
+                                  <h6 className="minimsg">
+                                    Amet non eiusmod ea labore amet est esse
+                                    tempor cupidatat minim nulla commodo
+                                    reprehenderit exercitation.
+                                  </h6>
                                 </div>
-                                <h6 className="minimsg">
-                                  Amet non eiusmod ea labore amet est esse
-                                  tempor cupidatat minim nulla commodo
-                                  reprehenderit exercitation.
-                                </h6>
-                              </div>
-                            </Link>
-                            <Link to="/" className="d-flex gap-3">
-                              <div className="flex-shrink-0">
-                                <div className="iconmenu ofit rounded-circle overflow-hidden">
-                                  <img src={pe1} alt="userpic" />
+                              </Link>
+                              <Link to="/" className="d-flex gap-3">
+                                <div className="flex-shrink-0">
+                                  <div className="iconmenu ofit rounded-circle overflow-hidden">
+                                    <img src={pe1} alt="userpic" />
+                                  </div>
                                 </div>
-                              </div>
-                              <div className="flex-grow-1">
-                                <div className="d-flex justify-content-between">
-                                  <h4>Username</h4>
-                                  <p className="">Time ago</p>
+                                <div className="flex-grow-1">
+                                  <div className="d-flex justify-content-between">
+                                    <h4>Username</h4>
+                                    <p className="">Time ago</p>
+                                  </div>
+                                  <h6 className="minimsg">
+                                    Amet non eiusmod ea labore amet est esse
+                                    tempor cupidatat minim nulla commodo
+                                    reprehenderit exercitation.
+                                  </h6>
                                 </div>
-                                <h6 className="minimsg">
-                                  Amet non eiusmod ea labore amet est esse
-                                  tempor cupidatat minim nulla commodo
-                                  reprehenderit exercitation.
-                                </h6>
-                              </div>
-                            </Link>
-                            <Link to="/" className="d-flex gap-3">
-                              <div className="flex-shrink-0">
-                                <div className="iconmenu ofit rounded-circle overflow-hidden">
-                                  <img src={pe1} alt="userpic" />
+                              </Link>
+                              <Link to="/" className="d-flex gap-3">
+                                <div className="flex-shrink-0">
+                                  <div className="iconmenu ofit rounded-circle overflow-hidden">
+                                    <img src={pe1} alt="userpic" />
+                                  </div>
                                 </div>
-                              </div>
-                              <div className="flex-grow-1">
-                                <div className="d-flex justify-content-between">
-                                  <h4>Username</h4>
-                                  <p className="">Time ago</p>
+                                <div className="flex-grow-1">
+                                  <div className="d-flex justify-content-between">
+                                    <h4>Username</h4>
+                                    <p className="">Time ago</p>
+                                  </div>
+                                  <h6 className="minimsg">
+                                    Amet non eiusmod ea labore amet est esse
+                                    tempor cupidatat minim nulla commodo
+                                    reprehenderit exercitation.
+                                  </h6>
                                 </div>
-                                <h6 className="minimsg">
-                                  Amet non eiusmod ea labore amet est esse
-                                  tempor cupidatat minim nulla commodo
-                                  reprehenderit exercitation.
-                                </h6>
-                              </div>
-                            </Link>
+                              </Link>
                             </div>
 
                             <div className="d-block morebtn">
@@ -515,7 +521,9 @@ useEffect(() => {
                     <div className="">
                       <button
                         type="button"
-                        className={`topmenu rounded-circle overflow-hidden p-0 ${activeMenu === "menu4" ? "active" : ""}`}
+                        className={`topmenu rounded-circle overflow-hidden p-0 ${
+                          activeMenu === "menu4" ? "active" : ""
+                        }`}
                         onClick={() => toggleMenu("menu4")}
                       >
                         <img
@@ -526,12 +534,14 @@ useEffect(() => {
                       </button>
                       <div
                         className="menubox"
-                        style={{ display: activeMenu === "menu4" ? "block" : "none" }}
+                        style={{
+                          display: activeMenu === "menu4" ? "block" : "none",
+                        }}
                       >
                         <div className="d-flex flex-column gap-4 ">
                           <h3>Profile and settings</h3>
                           <div className="d-flex flex-column gap-3">
-                            <Link to="/" className="d-flex gap-3">
+                            <Link to="/editprofile" className="d-flex gap-3">
                               <div className="flex-shrink-0">
                                 <div className="iconmenu ofit rounded-circle overflow-hidden">
                                   <img src={pe1} alt="userpic" />
@@ -544,7 +554,9 @@ useEffect(() => {
                             </Link>
 
                             <div className="d-block morebtn">
-                              <button type="button"  onClick={openPopup}>UPGRADE MEMBERSHIP</button>
+                              <button type="button" onClick={openPopup}>
+                                UPGRADE MEMBERSHIP
+                              </button>
                             </div>
                             <div className="d-flex flex-column gap-3 helpset pt-3">
                               <Link to="/" className="d-flex gap-3">
@@ -592,8 +604,10 @@ useEffect(() => {
           </div>
         </div>
       </header>
-      <UpgradeMembership isOpen={isPopupOpen} onClose={closePopup}>
-            </UpgradeMembership>
+      <UpgradeMembership
+        isOpen={isPopupOpen}
+        onClose={closePopup}
+      ></UpgradeMembership>
     </>
   );
 }

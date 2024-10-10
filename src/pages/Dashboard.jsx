@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Headertwo from "../components/Headertwo";
 import { Leftsidebar } from "../components/Leftsidebar";
@@ -6,8 +6,20 @@ import { Rightsidebar } from "../components/Rightsidebar";
 import { SlOptions } from "react-icons/sl";
 import userpic from "../assets/images/pic.png";
 import img1 from "../assets/images/pic.png";
+import { useNavigate } from "react-router-dom";
 
 function Dashboard() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Check if the username key exists in session storage
+    const storedUsername = sessionStorage.getItem("userLogin");
+    const userLogin = JSON.parse(storedUsername);
+
+    if (userLogin == null) {
+      navigate("/login");
+    }
+  }, []);
   return (
     <>
       <Headertwo />
@@ -37,12 +49,15 @@ function Dashboard() {
                     </div>
                     <div className="flex-shrink-0">
                       <button type="button" className="btnoption">
-                      <SlOptions />
+                        <SlOptions />
                       </button>
                     </div>
                   </div>
-                  <Link to="/" className="imgblock ofit rounded-3 overflow-hidden mt-2">
-                    <img src={img1} alt="userpic"/>
+                  <Link
+                    to="/"
+                    className="imgblock ofit rounded-3 overflow-hidden mt-2"
+                  >
+                    <img src={img1} alt="userpic" />
                   </Link>
                 </div>
                 <div className="postblock d-flex flex-column rounded-4 overflow-hidden">
@@ -62,7 +77,7 @@ function Dashboard() {
                     </div>
                     <div className="flex-shrink-0">
                       <button type="button" className="btnoption">
-                      <SlOptions />
+                        <SlOptions />
                       </button>
                     </div>
                   </div>
@@ -84,7 +99,7 @@ function Dashboard() {
                     </div>
                     <div className="flex-shrink-0">
                       <button type="button" className="btnoption">
-                      <SlOptions />
+                        <SlOptions />
                       </button>
                     </div>
                   </div>
@@ -106,7 +121,7 @@ function Dashboard() {
                     </div>
                     <div className="flex-shrink-0">
                       <button type="button" className="btnoption">
-                      <SlOptions />
+                        <SlOptions />
                       </button>
                     </div>
                   </div>
@@ -128,7 +143,7 @@ function Dashboard() {
                     </div>
                     <div className="flex-shrink-0">
                       <button type="button" className="btnoption">
-                      <SlOptions />
+                        <SlOptions />
                       </button>
                     </div>
                   </div>
@@ -150,12 +165,15 @@ function Dashboard() {
                     </div>
                     <div className="flex-shrink-0">
                       <button type="button" className="btnoption">
-                      <SlOptions />
+                        <SlOptions />
                       </button>
                     </div>
                   </div>
-                  <Link to="/" className="imgblock ofit rounded-3 overflow-hidden mt-2">
-                    <img src={img1} alt="userpic"/>
+                  <Link
+                    to="/"
+                    className="imgblock ofit rounded-3 overflow-hidden mt-2"
+                  >
+                    <img src={img1} alt="userpic" />
                   </Link>
                 </div>
                 <div className="postblock d-flex flex-column rounded-4 overflow-hidden">
@@ -175,12 +193,15 @@ function Dashboard() {
                     </div>
                     <div className="flex-shrink-0">
                       <button type="button" className="btnoption">
-                      <SlOptions />
+                        <SlOptions />
                       </button>
                     </div>
                   </div>
-                  <Link to="/" className="imgblock ofit rounded-3 overflow-hidden mt-2">
-                    <img src={img1} alt="userpic"/>
+                  <Link
+                    to="/"
+                    className="imgblock ofit rounded-3 overflow-hidden mt-2"
+                  >
+                    <img src={img1} alt="userpic" />
                   </Link>
                 </div>
                 <div className="postblock d-flex flex-column rounded-4 overflow-hidden">
@@ -200,7 +221,7 @@ function Dashboard() {
                     </div>
                     <div className="flex-shrink-0">
                       <button type="button" className="btnoption">
-                      <SlOptions />
+                        <SlOptions />
                       </button>
                     </div>
                   </div>
@@ -222,7 +243,7 @@ function Dashboard() {
                     </div>
                     <div className="flex-shrink-0">
                       <button type="button" className="btnoption">
-                      <SlOptions />
+                        <SlOptions />
                       </button>
                     </div>
                   </div>
@@ -244,7 +265,7 @@ function Dashboard() {
                     </div>
                     <div className="flex-shrink-0">
                       <button type="button" className="btnoption">
-                      <SlOptions />
+                        <SlOptions />
                       </button>
                     </div>
                   </div>
@@ -266,7 +287,7 @@ function Dashboard() {
                     </div>
                     <div className="flex-shrink-0">
                       <button type="button" className="btnoption">
-                      <SlOptions />
+                        <SlOptions />
                       </button>
                     </div>
                   </div>
@@ -288,12 +309,15 @@ function Dashboard() {
                     </div>
                     <div className="flex-shrink-0">
                       <button type="button" className="btnoption">
-                      <SlOptions />
+                        <SlOptions />
                       </button>
                     </div>
                   </div>
-                  <Link to="/" className="imgblock ofit rounded-3 overflow-hidden mt-2">
-                    <img src={img1} alt="userpic"/>
+                  <Link
+                    to="/"
+                    className="imgblock ofit rounded-3 overflow-hidden mt-2"
+                  >
+                    <img src={img1} alt="userpic" />
                   </Link>
                 </div>
               </div>

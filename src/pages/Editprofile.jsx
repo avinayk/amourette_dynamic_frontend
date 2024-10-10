@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios, { AxiosResponse } from "axios";
+import { useNavigate } from "react-router-dom";
 // import { Link } from "react-router-dom";
 import Headertwo from "../components/Headertwo";
 import {
@@ -14,6 +16,9 @@ import "react-accessible-accordion/dist/fancy-example.css";
 import { FiPlus } from "react-icons/fi";
 import { BsCloudUpload } from "react-icons/bs";
 
+import SuccessPop from "../components/SuccessPop";
+import ErrorPop from "../components/ErrorPop";
+
 import de1 from "../assets/images/de1.png";
 import de2 from "../assets/images/de2.png";
 import de3 from "../assets/images/de3.png";
@@ -28,14 +33,227 @@ import de11 from "../assets/images/de11.png";
 import de12 from "../assets/images/de12.png";
 
 function Editprofile() {
+  const navigate = useNavigate();
+  const [showPopSuccess, setShowPopSuccess] = useState(false);
+  const [showPopError, setShowPopError] = useState(false);
+  const [successPopMessage, setPopsuccessMessage] = useState("");
+  const [errorPopMessage, setPoperrorMessage] = useState("");
+  const [LoginData, setLoginData] = useState(null);
+  const [profilevalue, setprofilevalue] = useState("");
+
+  const [nationality, setNationality] = useState("");
+  const [bodyType, setBodyType] = useState("");
+
+  const [sexual_orientation, setsexual_orientation] = useState("");
+  const [relationship_status, setrelationship_status] = useState("");
+
+  const [smokerValue, setsmokerValue] = useState("");
+  const [tattosValue, settattosValue] = useState("");
+
+  const [fetishValue, setfetishValue] = useState("");
+  const [search_looking_for, setsearch_looking_for] = useState("");
+  const [drinkerValue, setdrinkerValue] = useState("");
+  const [body_piercingsValue, setbody_piercingsValue] = useState("");
+  const [degree, setDegree] = useState("");
+  const [heightFeet, setHeightFeet] = useState(profilevalue.height_feet || "");
+  const [heightInches, setHeightInches] = useState(
+    profilevalue.height_inches || ""
+  );
+  var apiURL = "http://localhost:3000/api/";
+  useEffect(() => {
+    // Check if the username key exists in session storage
+    const storedUsername = sessionStorage.getItem("userLogin");
+    const userLogin = JSON.parse(storedUsername);
+    if (userLogin == null) {
+      navigate("/login");
+    } else {
+      setLoginData(userLogin);
+      // Call getProfile only if userLogin is available
+      getprofile(userLogin.email);
+    }
+  }, []);
+
+  const handleFeetChange = (event) => {
+    setHeightFeet(event.target.value);
+  };
+  const handlefetishChange = (event) => {
+    setfetishValue(event.target.value);
+  };
+  const handlebody_piercingsChange = (event) => {
+    setbody_piercingsValue(event.target.value);
+  };
+  const handledrinkerChange = (event) => {
+    setdrinkerValue(event.target.value);
+  };
+  const handletattosChange = (event) => {
+    settattosValue(event.target.value);
+  };
+  const handlesmokerChange = (event) => {
+    setsmokerValue(event.target.value);
+  };
+  const handleDegreeChange = (event) => {
+    setDegree(event.target.value);
+  };
+
+  const handleInchesChange = (event) => {
+    setHeightInches(event.target.value);
+  };
+
+  const handleNationalityChange = (event) => {
+    setNationality(event.target.value); // Update state with the selected value
+  };
+  const handleBodyTypeChange = (event) => {
+    setBodyType(event.target.value); // Update state with the selected value
+  };
+
+  const handleRelationStatusChange = (event) => {
+    setrelationship_status(event.target.value); // Update state with the selected value
+  };
+
+  const handleSearchLookingforChange = (event) => {
+    setsearch_looking_for(event.target.value); // Update state with the selected value
+  };
+
+  const handleSexualOrientationChange = (event) => {
+    setsexual_orientation(event.target.value); // Update state with the selected value
+  };
+  const getprofile = async (email) => {
+    let formData = {
+      email: email,
+    };
+    try {
+      const res = await axios.post(apiURL + "getProfile", formData, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      setprofilevalue(res.data);
+      setNationality(res.data.nationality);
+      setBodyType(res.data.bodytype);
+      setDegree(res.data.degree);
+      setdrinkerValue(res.data.drinker);
+      setfetishValue(res.data.fetish);
+      setbody_piercingsValue(res.data.body_piercings);
+      settattosValue(res.data.tattos);
+      setsmokerValue(res.data.smoker);
+      setsearch_looking_for(res.data.search_looking_for);
+      setrelationship_status(res.data.relationship_status);
+      setHeightFeet(res.data.height_feet);
+      setHeightInches(res.data.height_inches);
+      setsexual_orientation(res.data.sexual_orientation);
+      console.log(res.data);
+    } catch (err) {}
+  };
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    var vl = event.target;
+    console.log(vl.looking_for.value);
+
+    const formData = new FormData();
+
+    formData.append(
+      "looking_for",
+      vl.looking_for.value !== "" ? vl.looking_for.value : ""
+    );
+
+    // Append 'username' with a check
+    formData.append(
+      "username",
+      vl.username.value !== "" ? vl.username.value : ""
+    );
+
+    // Append other fields with checks
+    formData.append(
+      "location",
+      vl.location.value !== "" ? vl.location.value : ""
+    );
+    formData.append(
+      "preferences",
+      vl.preferences.value !== "" ? vl.preferences.value : ""
+    );
+    formData.append(
+      "nationality",
+      vl.nationality.value !== "" ? vl.nationality.value : ""
+    );
+    formData.append(
+      "bodytype",
+      vl.bodytype.value !== "" ? vl.bodytype.value : ""
+    );
+    formData.append("height_feet", heightFeet !== "" ? heightFeet : "");
+    formData.append("height_inches", heightInches !== "" ? heightInches : "");
+    formData.append(
+      "sexual_orientation",
+      sexual_orientation !== "" ? sexual_orientation : ""
+    );
+    formData.append(
+      "relationship_status",
+      relationship_status !== "" ? relationship_status : ""
+    );
+    formData.append(
+      "search_looking_for",
+      search_looking_for !== "" ? search_looking_for : ""
+    );
+    formData.append("degree", degree !== "" ? degree : "");
+    formData.append("drinker", drinkerValue !== "" ? drinkerValue : "");
+    formData.append("smoker", smokerValue !== "" ? smokerValue : "");
+    formData.append("tattos", tattosValue !== "" ? tattosValue : "");
+    formData.append(
+      "body_piercings",
+      body_piercingsValue !== "" ? body_piercingsValue : ""
+    );
+    formData.append("fetish", fetishValue !== "" ? fetishValue : "");
+    formData.append("token", LoginData.token);
+    formData.append("email", LoginData.email);
+
+    //formData.append("multi_image", vl.multi_image);
+
+    try {
+      const res = await axios.post(apiURL + "updateProfile", formData, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      console.log(res.data);
+      setShowPopSuccess(true);
+      setPopsuccessMessage(res.data.message);
+      setTimeout(() => {
+        setShowPopError(false);
+        setShowPopSuccess(false);
+        //navigate("/login");
+      }, 3500);
+      // Handle success (e.g., redirect or show a success message)
+    } catch (err) {
+      if (err.response && err.response.data && err.response.data.message) {
+        setShowPopSuccess(false);
+        setShowPopError(true);
+        setPoperrorMessage(err.response.data.message); // Store the error message in state
+      } else {
+        setShowPopSuccess(false);
+        setShowPopError(true);
+        setPoperrorMessage("An unknown error occurred.");
+      }
+      setTimeout(() => {
+        setShowPopError(false);
+        setShowPopSuccess(false);
+      }, 3500);
+    }
+  };
   return (
     <>
       <Headertwo />
+      {showPopSuccess && <SuccessPop message={successPopMessage} />}
+      {showPopError && <ErrorPop message={errorPopMessage} />}
       <section className="d-block editblock gapy">
         <div className="container-lg">
           <div className="row">
             <div className="col-12">
-              <form action="">
+              <form
+                onSubmit={handleSubmit}
+                action="javascript:void(0)"
+                method="post"
+              >
                 <div className="row gy-4">
                   <div className="col-md-3">
                     <div className="row useruploadpic gy-4">
@@ -43,7 +261,7 @@ function Editprofile() {
                         <div className="uploadfile rel bgload mb-3">
                           <input
                             type="file"
-                            name=""
+                            name="profile_image"
                             id=""
                             className="fileload"
                           />
@@ -121,7 +339,7 @@ function Editprofile() {
                       <div className="d-flex flex-column flex-md-row gap-3 justify-content-md-between edittitle">
                         <h3>Edit your profile</h3>
                         <div>
-                          <button type="button" className="savebtn">
+                          <button type="submit" className="savebtn">
                             Save Profile
                           </button>
                         </div>
@@ -129,26 +347,41 @@ function Editprofile() {
                       <div className="d-flex flex-column gap-2">
                         <label htmlFor="">I'm looking for</label>
                         <textarea
-                          name=""
+                          name="looking_for"
                           id=""
                           rows="5"
+                          defaultValue={profilevalue.looking_for}
                           placeholder="Write something..."
                         ></textarea>
                       </div>
                       <div className="d-flex flex-column gap-2">
                         <label htmlFor="">Username</label>
-                        <input type="text" placeholder="Write something..." />
+                        <input
+                          type="text"
+                          defaultValue={profilevalue.username}
+                          placeholder="Write something..."
+                          name="username"
+                        />
                       </div>
                       <div className="d-flex flex-column gap-2">
                         <label htmlFor="">Location</label>
-                        <input type="text" placeholder="Write something..." />
+                        <input
+                          type="text"
+                          defaultValue={profilevalue.location}
+                          placeholder="Write something..."
+                          name="location"
+                        />
                       </div>
                       <div className="d-flex flex-column gap-2">
                         <label htmlFor="">Preferences</label>
-                        <select name="" id="">
+                        <select
+                          name="preferences"
+                          id=""
+                          value={profilevalue.preferences}
+                        >
                           <option value="">Preferences</option>
-                          <option value="">Preferences</option>
-                          <option value="">Preferences</option>
+                          <option value="Preferences">Preferences</option>
+                          <option value="Preferences">Preferences</option>
                         </select>
                       </div>
                       <Accordion>
@@ -171,13 +404,25 @@ function Editprofile() {
                             <div className="listbox d-flex flex-wrap gap-3">
                               <label class="cbox">
                                 Indian
-                                <input type="radio" name="nationality" />
+                                <input
+                                  type="radio"
+                                  name="nationality"
+                                  value="Indian"
+                                  checked={nationality === "Indian"} // Check if this option is selected
+                                  onChange={handleNationalityChange}
+                                />
                                 <span class="checkmark"></span>
                               </label>
 
                               <label class="cbox">
                                 Other
-                                <input type="radio" name="nationality" />
+                                <input
+                                  type="radio"
+                                  name="nationality"
+                                  value="Other"
+                                  checked={nationality === "Other"} // Check if this option is selected
+                                  onChange={handleNationalityChange}
+                                />
                                 <span class="checkmark"></span>
                               </label>
                             </div>
@@ -204,8 +449,10 @@ function Editprofile() {
                                 Slim
                                 <input
                                   type="radio"
-                                  name="bodyType"
+                                  name="bodytype"
                                   value="slim"
+                                  checked={bodyType === "slim"} // Check if this option is selected
+                                  onChange={handleBodyTypeChange} // Update state on change
                                 />
                                 <span className="checkmark"></span>
                               </label>
@@ -214,8 +461,10 @@ function Editprofile() {
                                 Athletic
                                 <input
                                   type="radio"
-                                  name="bodyType"
+                                  name="bodytype"
                                   value="athletic"
+                                  checked={bodyType === "athletic"} // Check if this option is selected
+                                  onChange={handleBodyTypeChange} // Update state on change
                                 />
                                 <span className="checkmark"></span>
                               </label>
@@ -224,8 +473,10 @@ function Editprofile() {
                                 Average
                                 <input
                                   type="radio"
-                                  name="bodyType"
+                                  name="bodytype"
                                   value="average"
+                                  checked={bodyType === "average"} // Check if this option is selected
+                                  onChange={handleBodyTypeChange} // Update state on change
                                 />
                                 <span className="checkmark"></span>
                               </label>
@@ -234,8 +485,10 @@ function Editprofile() {
                                 Curvy
                                 <input
                                   type="radio"
-                                  name="bodyType"
+                                  name="bodytype"
                                   value="curvy"
+                                  checked={bodyType === "curvy"} // Check if this option is selected
+                                  onChange={handleBodyTypeChange} // Update state on change
                                 />
                                 <span className="checkmark"></span>
                               </label>
@@ -244,8 +497,10 @@ function Editprofile() {
                                 Full-figured
                                 <input
                                   type="radio"
-                                  name="bodyType"
+                                  name="bodytype"
                                   value="full-figured"
+                                  checked={bodyType === "full-figured"} // Check if this option is selected
+                                  onChange={handleBodyTypeChange} // Update state on change
                                 />
                                 <span className="checkmark"></span>
                               </label>
@@ -254,8 +509,10 @@ function Editprofile() {
                                 Plus-size
                                 <input
                                   type="radio"
-                                  name="bodyType"
+                                  name="bodytype"
                                   value="plus-size"
+                                  checked={bodyType === "plus-size"} // Check if this option is selected
+                                  onChange={handleBodyTypeChange} // Update state on change
                                 />
                                 <span className="checkmark"></span>
                               </label>
@@ -264,8 +521,10 @@ function Editprofile() {
                                 Muscular
                                 <input
                                   type="radio"
-                                  name="bodyType"
+                                  name="bodytype"
                                   value="muscular"
+                                  checked={bodyType === "muscular"} // Check if this option is selected
+                                  onChange={handleBodyTypeChange} // Update state on change
                                 />
                                 <span className="checkmark"></span>
                               </label>
@@ -274,8 +533,10 @@ function Editprofile() {
                                 Petite
                                 <input
                                   type="radio"
-                                  name="bodyType"
+                                  name="bodytype"
                                   value="petite"
+                                  checked={bodyType === "petite"} // Check if this option is selected
+                                  onChange={handleBodyTypeChange} // Update state on change
                                 />
                                 <span className="checkmark"></span>
                               </label>
@@ -284,8 +545,10 @@ function Editprofile() {
                                 Tall
                                 <input
                                   type="radio"
-                                  name="bodyType"
+                                  name="bodytype"
                                   value="tall"
+                                  checked={bodyType === "tall"} // Check if this option is selected
+                                  onChange={handleBodyTypeChange} // Update state on change
                                 />
                                 <span className="checkmark"></span>
                               </label>
@@ -294,8 +557,10 @@ function Editprofile() {
                                 Other
                                 <input
                                   type="radio"
-                                  name="bodyType"
+                                  name="bodytype"
                                   value="other"
+                                  checked={bodyType === "other"} // Check if this option is selected
+                                  onChange={handleBodyTypeChange} // Update state on change
                                 />
                                 <span className="checkmark"></span>
                               </label>
@@ -319,14 +584,24 @@ function Editprofile() {
                           </AccordionItemHeading>
                           <AccordionItemPanel>
                             <div className="d-flex gap-2 heightsel">
-                              <select id="height-feet" name="height-feet">
+                              <select
+                                id="height-feet"
+                                onChange={handleFeetChange}
+                                value={heightFeet}
+                                name="height_feet"
+                              >
                                 <option value="">Select Feet</option>
                                 <option value="4">4 ft</option>
                                 <option value="5">5 ft</option>
                                 <option value="6">6 ft</option>
                                 <option value="7">7 ft</option>
                               </select>
-                              <select id="height-inches" name="height-inches">
+                              <select
+                                id="height-inches"
+                                onChange={handleInchesChange}
+                                value={heightInches}
+                                name="height_inches"
+                              >
                                 <option value="">Select Inches</option>
                                 <option value="0">0 in</option>
                                 <option value="1">1 in</option>
@@ -365,9 +640,12 @@ function Editprofile() {
                                 Heterosexual
                                 <input
                                   type="radio"
-                                  name="sexualOrientation"
-                                  value="heterosexual"
-                                  required
+                                  name="sexual_orientation"
+                                  value="Heterosexual"
+                                  checked={
+                                    sexual_orientation === "Heterosexual"
+                                  }
+                                  onChange={handleSexualOrientationChange}
                                 />
                                 <span className="checkmark"></span>
                               </label>
@@ -376,8 +654,10 @@ function Editprofile() {
                                 Homosexual
                                 <input
                                   type="radio"
-                                  name="sexualOrientation"
-                                  value="homosexual"
+                                  name="sexual_orientation"
+                                  value="Homosexual"
+                                  checked={sexual_orientation === "Homosexual"}
+                                  onChange={handleSexualOrientationChange}
                                 />
                                 <span className="checkmark"></span>
                               </label>
@@ -386,8 +666,10 @@ function Editprofile() {
                                 Bisexual
                                 <input
                                   type="radio"
-                                  name="sexualOrientation"
-                                  value="bisexual"
+                                  name="sexual_orientation"
+                                  value="Bisexual"
+                                  checked={sexual_orientation === "Bisexual"}
+                                  onChange={handleSexualOrientationChange}
                                 />
                                 <span className="checkmark"></span>
                               </label>
@@ -396,8 +678,10 @@ function Editprofile() {
                                 Pansexual
                                 <input
                                   type="radio"
-                                  name="sexualOrientation"
-                                  value="pansexual"
+                                  name="sexual_orientation"
+                                  value="Pansexual"
+                                  checked={sexual_orientation === "Pansexual"}
+                                  onChange={handleSexualOrientationChange}
                                 />
                                 <span className="checkmark"></span>
                               </label>
@@ -406,8 +690,10 @@ function Editprofile() {
                                 Asexual
                                 <input
                                   type="radio"
-                                  name="sexualOrientation"
-                                  value="asexual"
+                                  name="sexual_orientation"
+                                  value="Asexual"
+                                  checked={sexual_orientation === "Asexual"}
+                                  onChange={handleSexualOrientationChange}
                                 />
                                 <span className="checkmark"></span>
                               </label>
@@ -416,8 +702,10 @@ function Editprofile() {
                                 Other
                                 <input
                                   type="radio"
-                                  name="sexualOrientation"
-                                  value="other"
+                                  name="sexual_orientation"
+                                  value="Other"
+                                  checked={sexual_orientation === "Other"}
+                                  onChange={handleSexualOrientationChange}
                                 />
                                 <span className="checkmark"></span>
                               </label>
@@ -445,9 +733,10 @@ function Editprofile() {
                                 Single
                                 <input
                                   type="radio"
-                                  name="relationshipStatus"
-                                  value="single"
-                                  required
+                                  name="relationship_status"
+                                  value="Single"
+                                  checked={relationship_status === "Single"}
+                                  onChange={handleRelationStatusChange}
                                 />
                                 <span className="checkmark"></span>
                               </label>
@@ -456,8 +745,12 @@ function Editprofile() {
                                 In a Relationship
                                 <input
                                   type="radio"
-                                  name="relationshipStatus"
-                                  value="inARelationship"
+                                  checked={
+                                    relationship_status === "InaRelationship"
+                                  }
+                                  onChange={handleRelationStatusChange}
+                                  name="relationship_status"
+                                  value="InaRelationship"
                                 />
                                 <span className="checkmark"></span>
                               </label>
@@ -466,7 +759,9 @@ function Editprofile() {
                                 Engaged
                                 <input
                                   type="radio"
-                                  name="relationshipStatus"
+                                  checked={relationship_status === "engaged"}
+                                  onChange={handleRelationStatusChange}
+                                  name="relationship_status"
                                   value="engaged"
                                 />
                                 <span className="checkmark"></span>
@@ -476,8 +771,10 @@ function Editprofile() {
                                 Married
                                 <input
                                   type="radio"
-                                  name="relationshipStatus"
-                                  value="married"
+                                  checked={relationship_status === "Married"}
+                                  onChange={handleRelationStatusChange}
+                                  name="relationship_status"
+                                  value="Married"
                                 />
                                 <span className="checkmark"></span>
                               </label>
@@ -486,8 +783,12 @@ function Editprofile() {
                                 It's Complicated
                                 <input
                                   type="radio"
-                                  name="relationshipStatus"
-                                  value="itsComplicated"
+                                  checked={
+                                    relationship_status === "ItsComplicated"
+                                  }
+                                  onChange={handleRelationStatusChange}
+                                  name="relationship_status"
+                                  value="ItsComplicated"
                                 />
                                 <span className="checkmark"></span>
                               </label>
@@ -496,8 +797,10 @@ function Editprofile() {
                                 Separated
                                 <input
                                   type="radio"
-                                  name="relationshipStatus"
-                                  value="separated"
+                                  checked={relationship_status === "Separated"}
+                                  onChange={handleRelationStatusChange}
+                                  name="relationship_status"
+                                  value="Separated"
                                 />
                                 <span className="checkmark"></span>
                               </label>
@@ -506,8 +809,10 @@ function Editprofile() {
                                 Divorced
                                 <input
                                   type="radio"
-                                  name="relationshipStatus"
-                                  value="divorced"
+                                  checked={relationship_status === "Divorced"}
+                                  onChange={handleRelationStatusChange}
+                                  name="relationship_status"
+                                  value="Divorced"
                                 />
                                 <span className="checkmark"></span>
                               </label>
@@ -516,8 +821,10 @@ function Editprofile() {
                                 Widowed
                                 <input
                                   type="radio"
-                                  name="relationshipStatus"
-                                  value="widowed"
+                                  checked={relationship_status === "Widowed"}
+                                  onChange={handleRelationStatusChange}
+                                  name="relationship_status"
+                                  value="Widowed"
                                 />
                                 <span className="checkmark"></span>
                               </label>
@@ -526,8 +833,10 @@ function Editprofile() {
                                 Other
                                 <input
                                   type="radio"
-                                  name="relationshipStatus"
-                                  value="other"
+                                  checked={relationship_status === "Other"}
+                                  onChange={handleRelationStatusChange}
+                                  name="relationship_status"
+                                  value="Other"
                                 />
                                 <span className="checkmark"></span>
                               </label>
@@ -555,9 +864,10 @@ function Editprofile() {
                                 Friendship
                                 <input
                                   type="radio"
-                                  name="lookingFor"
+                                  name="search_looking_for"
                                   value="friendship"
-                                  required
+                                  checked={search_looking_for === "friendship"}
+                                  onChange={handleSearchLookingforChange}
                                 />
                                 <span className="checkmark"></span>
                               </label>
@@ -566,7 +876,11 @@ function Editprofile() {
                                 Casual Dating
                                 <input
                                   type="radio"
-                                  name="lookingFor"
+                                  checked={
+                                    search_looking_for === "casualDating"
+                                  }
+                                  onChange={handleSearchLookingforChange}
+                                  name="search_looking_for"
                                   value="casualDating"
                                 />
                                 <span className="checkmark"></span>
@@ -576,7 +890,11 @@ function Editprofile() {
                                 Serious Relationship
                                 <input
                                   type="radio"
-                                  name="lookingFor"
+                                  checked={
+                                    search_looking_for === "seriousRelationship"
+                                  }
+                                  onChange={handleSearchLookingforChange}
+                                  name="search_looking_for"
                                   value="seriousRelationship"
                                 />
                                 <span className="checkmark"></span>
@@ -586,7 +904,9 @@ function Editprofile() {
                                 Marriage
                                 <input
                                   type="radio"
-                                  name="lookingFor"
+                                  checked={search_looking_for === "marriage"}
+                                  onChange={handleSearchLookingforChange}
+                                  name="search_looking_for"
                                   value="marriage"
                                 />
                                 <span className="checkmark"></span>
@@ -596,7 +916,9 @@ function Editprofile() {
                                 Long-term Relationship
                                 <input
                                   type="radio"
-                                  name="lookingFor"
+                                  checked={search_looking_for === "longTerm"}
+                                  onChange={handleSearchLookingforChange}
+                                  name="search_looking_for"
                                   value="longTerm"
                                 />
                                 <span className="checkmark"></span>
@@ -606,7 +928,11 @@ function Editprofile() {
                                 Open Relationship
                                 <input
                                   type="radio"
-                                  name="lookingFor"
+                                  checked={
+                                    search_looking_for === "openRelationship"
+                                  }
+                                  onChange={handleSearchLookingforChange}
+                                  name="search_looking_for"
                                   value="openRelationship"
                                 />
                                 <span className="checkmark"></span>
@@ -616,7 +942,11 @@ function Editprofile() {
                                 Something Else
                                 <input
                                   type="radio"
-                                  name="lookingFor"
+                                  checked={
+                                    search_looking_for === "somethingElse"
+                                  }
+                                  onChange={handleSearchLookingforChange}
+                                  name="search_looking_for"
                                   value="somethingElse"
                                 />
                                 <span className="checkmark"></span>
@@ -640,7 +970,12 @@ function Editprofile() {
                             </AccordionItemButton>
                           </AccordionItemHeading>
                           <AccordionItemPanel>
-                            <select id="degree" name="degree">
+                            <select
+                              id="degree"
+                              onChange={handleDegreeChange}
+                              value={degree}
+                              name="degree"
+                            >
                               <option value="">Select your degree</option>
                               <option value="highSchool">High School</option>
                               <option value="associateDegree">
@@ -679,15 +1014,22 @@ function Editprofile() {
                                 <input
                                   type="radio"
                                   name="drinker"
-                                  value="yes"
-                                  required
+                                  checked={drinkerValue === "Yes"} // Set checked based on state
+                                  onChange={handledrinkerChange}
+                                  value="Yes"
                                 />
                                 <span className="checkmark"></span>
                               </label>
 
                               <label className="cbox">
                                 No
-                                <input type="radio" name="drinker" value="no" />
+                                <input
+                                  type="radio"
+                                  name="drinker"
+                                  checked={drinkerValue === "No"} // Set checked based on state
+                                  onChange={handledrinkerChange}
+                                  value="No"
+                                />
                                 <span className="checkmark"></span>
                               </label>
                             </div>
@@ -715,15 +1057,22 @@ function Editprofile() {
                                 <input
                                   type="radio"
                                   name="smoker"
-                                  value="yes"
-                                  required
+                                  checked={smokerValue === "Yes"} // Set checked based on state
+                                  onChange={handlesmokerChange}
+                                  value="Yes"
                                 />
                                 <span className="checkmark"></span>
                               </label>
 
                               <label className="cbox">
                                 No
-                                <input type="radio" name="smoker" value="no" />
+                                <input
+                                  type="radio"
+                                  checked={smokerValue === "No"} // Set checked based on state
+                                  onChange={handlesmokerChange}
+                                  name="smoker"
+                                  value="No"
+                                />
                                 <span className="checkmark"></span>
                               </label>
                             </div>
@@ -751,16 +1100,23 @@ function Editprofile() {
                                 Yes
                                 <input
                                   type="radio"
-                                  name="tattoos"
-                                  value="yes"
-                                  required
+                                  name="tattos"
+                                  checked={tattosValue === "Yes"} // Set checked based on state
+                                  onChange={handletattosChange}
+                                  value="Yes"
                                 />
                                 <span className="checkmark"></span>
                               </label>
 
                               <label className="cbox">
                                 No
-                                <input type="radio" name="tattoos" value="no" />
+                                <input
+                                  type="radio"
+                                  checked={tattosValue === "No"} // Set checked based on state
+                                  onChange={handletattosChange}
+                                  name="tattos"
+                                  value="No"
+                                />
                                 <span className="checkmark"></span>
                               </label>
                             </div>
@@ -788,8 +1144,9 @@ function Editprofile() {
                                 <input
                                   type="radio"
                                   name="body_piercings"
-                                  value="yes"
-                                  required
+                                  checked={body_piercingsValue === "Yes"} // Set checked based on state
+                                  onChange={handlebody_piercingsChange}
+                                  value="Yes"
                                 />
                                 <span className="checkmark"></span>
                               </label>
@@ -799,7 +1156,9 @@ function Editprofile() {
                                 <input
                                   type="radio"
                                   name="body_piercings"
-                                  value="no"
+                                  checked={body_piercingsValue === "No"} // Set checked based on state
+                                  onChange={handlebody_piercingsChange}
+                                  value="No"
                                 />
                                 <span className="checkmark"></span>
                               </label>
@@ -827,7 +1186,9 @@ function Editprofile() {
                                 BDSM
                                 <input
                                   type="checkbox"
-                                  name="fetishes"
+                                  name="fetish"
+                                  checked={fetishValue === "BDSM"} // Set checked based on state
+                                  onChange={handlefetishChange}
                                   value="BDSM"
                                 />
                                 <span className="checkmark"></span>
@@ -837,7 +1198,9 @@ function Editprofile() {
                                 Role Play
                                 <input
                                   type="checkbox"
-                                  name="fetishes"
+                                  name="fetish"
+                                  checked={fetishValue === "Role Play"} // Set checked based on state
+                                  onChange={handlefetishChange}
                                   value="Role Play"
                                 />
                                 <span className="checkmark"></span>
@@ -847,7 +1210,9 @@ function Editprofile() {
                                 Feet
                                 <input
                                   type="checkbox"
-                                  name="fetishes"
+                                  name="fetish"
+                                  checked={fetishValue === "Feet"} // Set checked based on state
+                                  onChange={handlefetishChange}
                                   value="Feet"
                                 />
                                 <span className="checkmark"></span>
@@ -857,7 +1222,9 @@ function Editprofile() {
                                 Latex
                                 <input
                                   type="checkbox"
-                                  name="fetishes"
+                                  name="fetish"
+                                  checked={fetishValue === "Latex"} // Set checked based on state
+                                  onChange={handlefetishChange}
                                   value="Latex"
                                 />
                                 <span className="checkmark"></span>
@@ -867,7 +1234,9 @@ function Editprofile() {
                                 Voyeurism
                                 <input
                                   type="checkbox"
-                                  name="fetishes"
+                                  name="fetish"
+                                  checked={fetishValue === "Voyeurism"} // Set checked based on state
+                                  onChange={handlefetishChange}
                                   value="Voyeurism"
                                 />
                                 <span className="checkmark"></span>
@@ -877,7 +1246,9 @@ function Editprofile() {
                                 Other
                                 <input
                                   type="checkbox"
-                                  name="fetishes"
+                                  name="fetish"
+                                  checked={fetishValue === "Other"} // Set checked based on state
+                                  onChange={handlefetishChange}
                                   value="Other"
                                 />
                                 <span className="checkmark"></span>

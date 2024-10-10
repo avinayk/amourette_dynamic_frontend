@@ -229,3 +229,40 @@
   top: 10px;
   right: 10px;
 }
+
+.success_notification{
+  background-color: #202020;
+  padding: 15px 30px;
+  width: fit-content !important;
+  border-radius: 10px;
+  position: relative;
+    top: 58px;
+    right: 0px;
+    max-width: 50%;
+    box-shadow: 0px 0px 14px 0px #00ffa561;
+}
+.error_notification{
+  background-color: #202020;
+  padding: 15px 30px;
+  width: fit-content !important;
+  border-radius: 10px;
+  position: relative;
+    top: 58px;
+    right: 0px;
+    max-width: 50%;
+    box-shadow: 0px 0px 14px 0px #ff510061;
+}
+@media (max-width:768px){
+  .success_notification{
+  width: 100%;
+  top: 28px;
+  }
+}
+.success_notification p{
+  font-size: 18px;
+  font-weight: 500;
+}
+.error_notification p{
+  font-size: 18px;
+  font-weight: 500;
+}
